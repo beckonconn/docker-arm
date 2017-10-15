@@ -8,3 +8,4 @@ fi
 mv /etc/bind /etc/bind.orig
 ln -sf ${DATA_DIR} /etc/bind
 chmod -R 0775 ${DATA_DIR}
+chgrp -R ${BIND_GROUP} ${DATA_DIR}

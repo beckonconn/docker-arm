@@ -14,4 +14,4 @@ RUN chmod 0775 /usr/bin/entrypoint.sh
 
 EXPOSE 53/udp 53/tcp
 CMD ["/usr/bin/entrypoint.sh"]
-CMD ["/usr/sbin/named","-4","-f"]
+CMD ["/usr/sbin/named","-4","-g"]
