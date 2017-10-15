@@ -4,8 +4,8 @@ services:
 language:  bash
 script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-- docker build -t beckonconn/arm-bind .
-- docker run beckonconn/arm-bind named --version
+- docker build -t beckonconn/rpi-bind .
+- docker run beckonconn/rpi-bind named -v
 after_sucess:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
