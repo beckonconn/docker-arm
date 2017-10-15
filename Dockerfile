@@ -12,8 +12,6 @@ RUN apt-get update -y && apt-get install bind9 dnsutils -y
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod 0775 /usr/bin/entrypoint.sh
 
-EXPOSE 53/udp
-EXPOSE 53/tcp
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
-CMD ["/bin/systemctl enable named"]
-CMD ["/bin/systemctl start named"]
+EXPOSE 53/udp 53/tcp
+CMD ["/usr/bin/entrypoint.sh"]
+CMD ["/usr/sbin/named","-4","-f"]
