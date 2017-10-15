@@ -1,4 +1,7 @@
 sudo: required
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
 services:
 - docker
 language:  bash
@@ -6,10 +9,11 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 - docker build -t beckonconn/rpi-bind .
 - docker run beckonconn/rpi-bind named -v
+after_success:
 - >
-  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TEST_RESULT" == 0 ]; then
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u $dockerUser -p $dockerPass
-    docker tag beckonconn/rpi-bind beckonconn/rpi-bind:$TRAVIS_COMMIT
-    docker push beckonconn/rpi-bind:$TRAVIS_COMMIT
+    docker tag beckonconn/rpi-bind beckonconn/rpi-bind:$COMMIT
+    docker push beckonconn/rpi-bind:$COMMIT
     docker push beckonconn/rpi-bind
   fi
