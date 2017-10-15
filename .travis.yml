@@ -7,7 +7,7 @@ script:
 - docker build -t beckonconn/arm-bind .
 - docker run beckonconn/arm-bind named --version
 after_sucess:
-->
+- >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u $dockerUser -p $dockerPass
     docker tag beckonconn/rpi-bind beckonconn/rpi-bind:$TRAVIS_COMMIT
