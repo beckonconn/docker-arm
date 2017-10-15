@@ -8,7 +8,7 @@ language:  bash
 script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 - docker build -t beckonconn/rpi-bind .
-- docker run beckonconn/rpi-bind named -v
+- docker run beckonconn/rpi-bind "-v"
 after_success:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
