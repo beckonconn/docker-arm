@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/beckonconn/docker-arm.svg?branch=master)](https://travis-ci.org/beckonconn/docker-arm)
+[![Build Status](https://travis-ci.org/beckonconn/rpi-bind.svg?branch=master)](https://travis-ci.org/beckonconn/rpi-bind)
 
 This repo is designed to build the BINDv9 docker containers for Raspberry Pis. 
 
