@@ -11,7 +11,7 @@ chmod -R 0775 ${DATA_DIR}
 chgrp -R ${BIND_GROUP} ${DATA_DIR}
 
 
-if "$@" == ""; then
+if [[ "$@" == "" ]]; then
   exec /usr/sbin/named -4 -g
 else
   exec /usr/sbin/named "$@"

@@ -6,7 +6,9 @@ ENV DATA_DIR=/data \
     BIND_GROUP=bind
 
 # Update to latest packages and install bind
-RUN apt-get update -y && apt-get install bind9 dnsutils -y
+RUN apt-get update -y && \
+    apt-get install bind9 dnsutils -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy script to container and make it exectuable 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
